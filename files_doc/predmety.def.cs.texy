@@ -1,0 +1,93 @@
+`predmety.def` - struktura souboru
+############################
+
+Soubor je umístěn ve složce `tables` v adresáři se hrou. Velikost souboru je
+6580 bytů. Velikost definicí pro jednotlivé zbraně je rovna 188 bytům.
+
+
+| Údaj			| Velikost
+|------------------------------------------------------------------------------------------
+| Jméno zbraně		| 32 bytů
+| Typ střely		| 1 byte (`22` - puška, apod.; `20` - příruční zbraň)
+| Zobrazení zaměřovače	| 1 byte (`00` - bez zaměřovače; `40` - se zaměřovačem
+| Název 3D modelu zbraně	| 32 bajtů
+| 30 vlastností zbraně	| 120 bajtů
+
+
+
+Vlastnosti zbraní
+**********************
+Každá vlastnost zabítá 4 byty a je datového typu `long` nebo `float`. Vlastnosti
+následují bezprostředně za sebou: 4 byty – vlastnost, 4 byty vlastnost, adt. Za
+30 vlastnostmi ihned začíná charakteristika další zbraně. Problémy jsou s tím,
+že všechny vlastnosti nejsou univerzální, dokonce se pro střelné zbraně některé
+údaje liší ve svých hodnotách. Nemluvě o dalších typech zbraní.
+
+Názvy (jméno zbraně, název 3D modelu) jsou doplněny nulovými bajty, pokud
+nezabírají celých 32 bytů.
+Např. název 3D modelu revolveru "S&W model 27 Magnum" - `2sw27.i3d` - zabírá
+9 bytů, ale po nich následuje 23 nulových bajtů.
+
+
+5) Zvuk při výstřelu - `long`
+====================
+Obsahuje hodnotu podle následující tabulky:
+
+| 0	| bez zvuku
+| 63	| zvuk úderu lahví
+| 65	| nůž
+| 66	| pálka
+| 67	| Colt Detective Special
+| 68	| S&W model 27 Magnum
+| 69	| S&W model 10 M&P
+| 70	| Colt 1911
+| 71	| Thompson
+| 72	| Pumpovací brokovnice
+| 73	| Upilovaná brokovnice
+| 74	| Springfield
+| 189	| Mosin Nagan
+
+
+7) Držení zbraně - `long`
+====================
+Obsahuje hodnotu podle následující tabulky:
+
+| 0	| věc (jenom položka v inventáři) - např. dokumenty, bomba, ...
+| 1	| držení v ruce – jako pistoli
+| 2	| pušky – Mosin, Springfield
+| 3	| tak Tommy drží Thompson, pumpovací brokovnici
+| 4	| vrhací zbraně, např. granát, Molotov,...
+| 5	| na pěst
+| 6	| jen jednou rukou, láhev, nůž
+| 7	| oběma rukama, pálka, prkno, meč
+
+
+8) Množství nábojů v zásobníku - `long`
+===============================
+
+
+9) Počet nábojů v zásobníku - `long`
+===============================
+
+
+13) Maximální vzdálenost výstřelu - `float`
+===============================
+
+
+14) Zpomalení - `float`
+===============================
+
+
+17) Účinnost, zpětný ráz - `float`
+=============================
+Největší možná hodnota je rovena `0.9`.
+
+
+20) Prodleva mezi výstřely - `long`
+=============================
+
+
+22) Doba nabíjení - `long`
+=====================
+
+
